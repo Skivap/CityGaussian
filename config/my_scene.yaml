@@ -5,14 +5,14 @@ model_params: {
         kwargs: {}
     },
     sh_degree: 3,
-    source_path: "data/my_scene/train",  # adjust it to your own dataset
-    partition_name: "my_partition",  # adjust it to the name you want
+    source_path: "/app/data/nthu/",  # adjust it to your own dataset
+    partition_name: "my_scene",  # adjust it to the name you want
     pretrain_path: "output/my_scene_coarse/point_cloud/iteration_30000",  # adjust it to the output path of your coarse model
     model_path: "",  # leave it blank
     images: "images",
-    block_dim: [$X, $Y, $Z],  # replace $X, $Y, $Z with your block dimension along x, y, z axis
+    block_dim: [5, 2, 1],  # replace $X, $Y, $Z with your block dimension along x, y, z axis
     # aabb: [$x_min, $y_min, $z_min, $x_max, $y_max, $z_max],  # Uncomment this line if you want to appoint your own aabb definition
-    resolution: -1,  # adjust it to your downsample factor. -1 means downsampling longest side of image to 1,600 pixels
+    resolution: 4,  # adjust it to your downsample factor. -1 means downsampling longest side of image to 1,600 pixels
     white_background: False,
     data_device: "cuda",
     eval: False,

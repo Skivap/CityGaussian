@@ -16,6 +16,9 @@
 #include "rasterizer.h"
 #include <cuda_runtime_api.h>
 
+#include <cstdint>
+#include <cstddef> 
+
 namespace CudaRasterizer
 {
 	template <typename T>

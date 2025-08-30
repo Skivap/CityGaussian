@@ -27,7 +27,10 @@ def block_partitioning(cameras, gaussians, args, pp, scale=1.0, quiet=False, dis
             torch.cuda.empty_cache()
             args.aabb = get_default_aabb(args, cameras, xyz_org, scale)
             config_name = os.path.splitext(os.path.basename(args.config))[0]
-            np.save(os.path.join(args.partition_path, "data_partitions", f"{config_name}_aabb.npy"), np.array(args.aabb.detach().cpu()))
+            # np.save(os.path.join(args.partition_path, "data_partitions", f"{config_name}_aabb.npy"), np.array(args.aabb.detach().cpu()))
+            out_path = os.path.join(args.partition_path, "data_partitions", f"{config_name}_aabb.npy")
+            Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+            np.save(out_path, np.array(args.aabb.detach().cpu()))
         else:
             assert len(args.aabb) == 6, "Unknown args.aabb format!"
             args.aabb = torch.tensor(args.aabb, dtype=torch.float32, device=xyz_org.device)
